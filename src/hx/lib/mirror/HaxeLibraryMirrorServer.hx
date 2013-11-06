@@ -163,12 +163,17 @@ class HaxeLibraryMirrorServer
             new RouterArchive(req, res);
     }
 
+    static function onMkDir(error:NodeErr)
+    {
+
+    }
+
     static public function main()
     {
         getLogger("").addHandler(new NodeHandler());
 
-        Node.fs.mkdir("files");
-        Node.fs.mkdir("files/3.0");
+        Node.fs.mkdir("files", 0777, onMkDir);
+        Node.fs.mkdir("files/3.0", 0777, onMkDir);
 
         var logger:ILogger = getLogger("hx.lib.mirror.HaxeLibraryMirrorServer");
         logger.debug("Started server.");
