@@ -174,7 +174,7 @@ class HaxeLibraryMirrorServer
         logger.debug("Started server.");
 
         var server = Node.http.createServer(onCreateServer);
-        server.listen(3000,"localhost");
+        server.listen(3000,"0.0.0.0");
 
     }
 }
