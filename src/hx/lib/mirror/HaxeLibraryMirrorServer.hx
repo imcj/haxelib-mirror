@@ -77,6 +77,7 @@ class RouterArchive extends Router
     public function new(request, response)
     {
         super(request, response);
+        logger = getLogger("hx.lib.mirror.RouterArchive");
 
         target = url.pathname.substr(1);
         target_lock = target + ".lock";
