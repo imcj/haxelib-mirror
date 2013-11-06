@@ -1,0 +1,3 @@
+[submodule "nodejs-std"]
+	path = nodejs-std
+	url = http://github.com/imcj/nodejs-std.git
