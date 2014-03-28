@@ -121,6 +121,7 @@ class RouterArchive extends Router
     function lockedCacheFile(error:NodeErr)
     {
         if (null == error) {
+            logger.debug('请求远程文件。');
             http.get(Router.urlParse(request.url), onArchiveResponse);
         }
     }
@@ -137,10 +138,11 @@ class RouterArchive extends Router
 
     function onCachedFile()
     {
+        logger.debug("文件缓存完毕。")
         fs.unlink(target_lock, function(error) {
             if (null != error)
                 logger.error(error);
-            logger.debug('delete lock file ' + target_lock);
+            logger.debug('删除锁文件' + target_lock);
         });
     }
 }
@@ -157,7 +159,9 @@ class HaxeLibraryMirrorServer
         res:NodeHttpServerResp)
     {
         var url = Router.urlParse(req.url);
+        getLogger("").debug(url.pathname);
         var is_download_file = url.pathname.indexOf("/files/") == 0;
+
         if (!is_download_file)
             new RouterProxy(req, res);
         else

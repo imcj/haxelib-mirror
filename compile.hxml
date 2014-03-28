@@ -1,6 +1,7 @@
 -lib logging
+-lib nodejs
 -D nodejs
 -cp src
--cp nodejs-std/src
 -main hx.lib.mirror.HaxeLibraryMirrorServer
 -js build/haxelib-mirrord.js
+-cmd node build/haxelib-mirrord.js
